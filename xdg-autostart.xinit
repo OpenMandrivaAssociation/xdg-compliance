@@ -1,0 +1,7 @@
+# to be sourced
+
+case $DESKTOP in
+    IceWM)
+	xdg-autostart -r Old
+	;;
+esac

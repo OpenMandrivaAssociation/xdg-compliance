@@ -1,0 +1,33 @@
+# to be sourced
+
+# Only run this script for desktop environments that place scripts inside
+# /etc/menu.d
+
+case $DESKTOP in
+    Fluxbox|WindowMaker|IceWM|Fvwm2|BlackBox)
+	USER_STAMP=$HOME/.menu-updates.stamp
+	SYSTEM_STAMP=/var/lib/menu/.menu-updates.stamp
+	MENU_DIR=$HOME/.config/menus
+	APPS_DIR=$HOME/.local/share/applications
+
+	NEEDS_UPDATE=0
+
+	if [ \( -d "$MENU_DIR" -o -d "$APPS_DIR" \) \
+	    -o -f "$USER_STAMP" -a -f "$SYSTEM_STAMP" ]; then
+	    if [ ! -f "$USER_STAMP" ]; then
+		NEEDS_UPDATE=1;
+	    elif [ "$SYSTEM_STAMP" -nt "$USER_STAMP" ]; then
+		NEEDS_UPDATE=1;
+	    elif [ "$MENU_DIR" -nt "$USER_STAMP" ]; then
+		NEEDS_UPDATE=1;
+	    elif [ "$APPS_DIR" -nt "$USER_STAMP" ]; then
+		NEEDS_UPDATE=1;
+	    fi
+	    if [ $NEEDS_UPDATE -eq 1 ]; then
+		echo "Running update-menus..."
+		update-menus -u
+		echo "menu generation finished"
+	    fi
+	fi
+	;;
+esac

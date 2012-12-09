@@ -1,24 +1,23 @@
-Name:      xdg-compliance
-Version:   0.1
-Release:   %mkrel 2
+Name:		xdg-compliance
+Version:	0.1
+Release:	4
+License:	 MIT
+URL:		http://gitorious.org/xdg-autostart/
 
-License:   MIT
-URL:       http://gitorious.org/xdg-autostart/
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
-
-Source0:   xdg-autostart-%{version}.tar.bz2
-Source1:   xdg-autostart.xinit
-Source2:   update-menus.xinit
+Source0:	xdg-autostart-%{version}.tar.bz2
+Source1:	xdg-autostart.xinit
+Source2:	update-menus.xinit
+Patch0:		xdg-autostart-0.1-gcc4.7.patch
 
 #------------------------------------------------------------------------------#
 
 # package xdg-compliance
 
-Summary: Packages to help old desktop environments follow XDG standards
-Group:   Graphical desktop/Other
+Summary:	Packages to help old desktop environments follow XDG standards
+Group:		Graphical desktop/Other
 
-Requires: %{name}-autostart
-Requires: %{name}-menu
+Requires:	%{name}-autostart
+Requires:	%{name}-menu
 
 %description
 This meta-package requires %{name}-autostart and %{name}-menu.
@@ -28,46 +27,41 @@ This meta-package requires %{name}-autostart and %{name}-menu.
 #------------------------------------------------------------------------------#
 
 %package autostart
-
-Summary: XDG Autostart compliance for old desktop environments
-Group:   Graphical desktop/Other
+Summary:	XDG Autostart compliance for old desktop environments
+Group:		Graphical desktop/Other
 
 %description autostart
 This package provides a xinit.d script that emulates XDG Autostart compliance
 for old desktop environments.
 
 %files autostart
-%defattr(-,root,root)
 %{_bindir}/xdg-autostart
 %{_sysconfdir}/X11/xinit.d/xdg-autostart
 
 #------------------------------------------------------------------------------#
 
 %package menu
-
-Summary: User menus for old desktop environments based on XDG Menu
-Group:   Graphical desktop/Other
+Summary:	User menus for old desktop environments based on XDG Menu
+Group:		Graphical desktop/Other
 
 %description menu
 This package creates user-level menus for old desktop environments following
 the XDG Menu standard.
 
 %files menu
-%defattr(-,root,root)
 %{_sysconfdir}/X11/xinit.d/update-menus
 
 #------------------------------------------------------------------------------#
 
 %prep
-
 %setup -q -n xdg-autostart-%{version}
+%patch0 -p1
 
 %build
 %configure2_5x
 %make
 
 %install
-rm -rf %{buildroot}
 %makeinstall_std
 
 install -D -m 755 %{_sourcedir}/xdg-autostart.xinit \
@@ -75,5 +69,12 @@ install -D -m 755 %{_sourcedir}/xdg-autostart.xinit \
 install -D -m 755 %{_sourcedir}/update-menus.xinit \
                   %{buildroot}/%{_sysconfdir}/X11/xinit.d/update-menus
 
-%clean
-rm -rf %{buildroot}
+%changelog
+* Sat May 07 2011 Oden Eriksson <oeriksson@mandriva.com> 0.1-2mdv2011.0
++ Revision: 671292
+- mass rebuild
+
+* Mon Feb 14 2011 Paulo Ricardo Zanoni <pzanoni@mandriva.com> 0.1-1
++ Revision: 637733
+- imported package xdg-compliance
+
