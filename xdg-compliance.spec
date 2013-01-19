@@ -1,7 +1,7 @@
 Name:		xdg-compliance
 Version:	0.1
 Release:	4
-License:	 MIT
+License:	MIT
 URL:		http://gitorious.org/xdg-autostart/
 
 Source0:	xdg-autostart-%{version}.tar.bz2
@@ -64,17 +64,6 @@ the XDG Menu standard.
 %install
 %makeinstall_std
 
-install -D -m 755 %{_sourcedir}/xdg-autostart.xinit \
-                  %{buildroot}/%{_sysconfdir}/X11/xinit.d/xdg-autostart
-install -D -m 755 %{_sourcedir}/update-menus.xinit \
-                  %{buildroot}/%{_sysconfdir}/X11/xinit.d/update-menus
-
-%changelog
-* Sat May 07 2011 Oden Eriksson <oeriksson@mandriva.com> 0.1-2mdv2011.0
-+ Revision: 671292
-- mass rebuild
-
-* Mon Feb 14 2011 Paulo Ricardo Zanoni <pzanoni@mandriva.com> 0.1-1
-+ Revision: 637733
-- imported package xdg-compliance
+install -D -m 755 %{SOURCE1} %{buildroot}%{_sysconfdir}/X11/xinit.d/xdg-autostart
+install -D -m 755 %{SOURCE2} %{buildroot}%{_sysconfdir}/X11/xinit.d/update-menus
 
