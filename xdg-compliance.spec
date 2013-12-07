@@ -1,6 +1,6 @@
 Name:		xdg-compliance
 Version:	0.1
-Release:	6
+Release:	7
 License:	MIT
 URL:		http://gitorious.org/xdg-autostart/
 
