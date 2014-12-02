@@ -1,6 +1,6 @@
 Name:		xdg-compliance
 Version:	0.1
-Release:	10
+Release:	11
 License:	MIT
 URL:		http://gitorious.org/xdg-autostart/
 
@@ -8,6 +8,8 @@ Source0:	xdg-autostart-%{version}.tar.bz2
 Source1:	xdg-autostart.xinit
 Source2:	update-menus.xinit
 Patch0:		xdg-autostart-0.1-gcc4.7.patch
+Patch1:		xdg-autostart-autostart-fail.patch
+Patch2:		xdg-autostart-OtherDEs.patch
 
 #------------------------------------------------------------------------------#
 
@@ -55,10 +57,10 @@ the XDG Menu standard.
 
 %prep
 %setup -q -n xdg-autostart-%{version}
-%patch0 -p1
+%apply_patches
 
 %build
-%configure2_5x
+%configure
 %make
 
 %install
