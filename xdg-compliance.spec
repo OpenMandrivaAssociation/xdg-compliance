@@ -1,3 +1,5 @@
+%define _disable_rebuild_configure 1
+
 Name:		xdg-compliance
 Version:	0.1
 Release:	14
