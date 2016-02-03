@@ -1,25 +1,19 @@
 %define _disable_rebuild_configure 1
 
+Summary:	Packages to help old desktop environments follow XDG standards
 Name:		xdg-compliance
 Version:	0.1
-Release:	14
+Release:	15
 License:	MIT
+Group:		Graphical desktop/Other
 URL:		http://gitorious.org/xdg-autostart/
-
 Source0:	xdg-autostart-%{version}.tar.bz2
 Source1:	xdg-autostart.xinit
 Source2:	update-menus.xinit
 Patch0:		xdg-autostart-0.1-gcc4.7.patch
 Patch1:		xdg-autostart-autostart-fail.patch
-Patch2:		xdg-autostart-OtherDEs.patch
-
-#------------------------------------------------------------------------------#
-
-# package xdg-compliance
-
-Summary:	Packages to help old desktop environments follow XDG standards
-Group:		Graphical desktop/Other
-
+Patch2:		xdg-autostart-0.1-OtherDEs.patch
+Patch3:		xdg-autostart-0.1-look_first_sysconfdir.patch
 Requires:	%{name}-autostart
 Requires:	%{name}-menu
 
@@ -70,4 +64,3 @@ the XDG Menu standard.
 
 install -D -m 755 %{SOURCE1} %{buildroot}%{_sysconfdir}/X11/xinit.d/xdg-autostart
 install -D -m 755 %{SOURCE2} %{buildroot}%{_sysconfdir}/X11/xinit.d/update-menus
-

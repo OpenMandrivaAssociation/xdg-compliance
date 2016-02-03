@@ -1,7 +1,7 @@
-# to be sourced
-
+#! /bin/sh
+DESKTOP="$DESKTOP_SESSION"
 case $DESKTOP in
-    IceWM)
-	xdg-autostart -r Old
-	;;
+    icewm)
+    xdg-autostart -r Old
+    ;;
 esac

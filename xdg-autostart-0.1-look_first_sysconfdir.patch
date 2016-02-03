@@ -1,0 +1,14 @@
+Index: xdg-autostart-0.1/libxdgutils/XDGBasedir.cpp
+===================================================================
+--- xdg-autostart-0.1/libxdgutils/XDGBasedir.cpp
++++ xdg-autostart-0.1/libxdgutils/XDGBasedir.cpp	2015-12-06 21:44:21.724955737 +0200
+@@ -141,7 +141,7 @@
+ 
+ std::list<std::string> XDGBasedir::findConfigFile(const char *fileName)
+ {
+-    return findFile(fileName, getVariable(XDG_CONFIG_HOME),
+-		    getVariable(XDG_CONFIG_DIRS));
++    return findFile(fileName, getVariable(XDG_CONFIG_DIRS),
++		    getVariable(XDG_CONFIG_HOME));
+ }
+ 
