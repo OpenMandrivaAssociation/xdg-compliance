@@ -3,7 +3,7 @@
 Summary:	Packages to help old desktop environments follow XDG standards
 Name:		xdg-compliance
 Version:	0.1
-Release:	17
+Release:	18
 License:	MIT
 Group:		Graphical desktop/Other
 URL:		http://gitorious.org/xdg-autostart/
