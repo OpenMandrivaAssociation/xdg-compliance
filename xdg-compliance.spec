@@ -53,7 +53,7 @@ the XDG Menu standard.
 
 %prep
 %setup -q -n xdg-autostart-%{version}
-%apply_patches
+%autopatch -p1
 
 %build
 %configure
