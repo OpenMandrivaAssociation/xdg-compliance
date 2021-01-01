@@ -7,7 +7,7 @@ Release:	1
 License:	MIT
 Group:		Graphical desktop/Other
 URL:		https://gitlab.com/somini/xdg-autostart
-Source0:	xhttps://gitlab.com/somini/xdg-autostart/-/archive/v%{version}/xdg-autostart-v%{version}.tar.gz
+Source0:	https://gitlab.com/somini/xdg-autostart/-/archive/v%{version}/xdg-autostart-v%{version}.tar.bz2
 Source1:	xdg-autostart.xinit
 Source2:	update-menus.xinit
 
