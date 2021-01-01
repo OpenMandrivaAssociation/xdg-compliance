@@ -53,7 +53,7 @@ the XDG Menu standard.
 #------------------------------------------------------------------------------#
 
 %prep
-%autosetup -p1 -n xdg-autostart-%{version}
+%autosetup -p1 -n xdg-autostart-v%{version}
 
 %build
 %meson
