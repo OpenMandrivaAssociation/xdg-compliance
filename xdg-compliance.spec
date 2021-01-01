@@ -2,18 +2,19 @@
 
 Summary:	Packages to help old desktop environments follow XDG standards
 Name:		xdg-compliance
-Version:	0.1
-Release:	20
+Version:	1.3.1
+Release:	1
 License:	MIT
 Group:		Graphical desktop/Other
-URL:		http://gitorious.org/xdg-autostart/
-Source0:	xdg-autostart-%{version}.tar.bz2
+URL:		https://gitlab.com/somini/xdg-autostart
+Source0:	https://gitlab.com/somini/xdg-autostart/-/archive/v%{version}/xdg-autostart-v%{version}.tar.bz2
 Source1:	xdg-autostart.xinit
 Source2:	update-menus.xinit
-Patch0:		xdg-autostart-0.1-gcc4.7.patch
-Patch1:		xdg-autostart-autostart-fail.patch
-Patch2:		xdg-autostart-0.1-OtherDEs.patch
-Patch3:		xdg-autostart-0.1-look_first_sysconfdir.patch
+
+BuildRequires:  meson
+BuildRequires:  vala
+BuildRequires:  pkgconfig(glib-2.0)
+
 Requires:	%{name}-autostart
 Requires:	%{name}-menu
 
@@ -52,14 +53,15 @@ the XDG Menu standard.
 #------------------------------------------------------------------------------#
 
 %prep
-%autosetup -p1 -n xdg-autostart-%{version}
+%autosetup -p1 -n xdg-autostart-v%{version}
 
 %build
-%configure
-%make
+%meson
+%meson_build
 
 %install
-%makeinstall_std
+%meson_install
 
+install -D -m 755 build/xdg-autostart %{buildroot}%{_bindir}/xdg-autostart
 install -D -m 755 %{SOURCE1} %{buildroot}%{_sysconfdir}/X11/xinit.d/xdg-autostart
 install -D -m 755 %{SOURCE2} %{buildroot}%{_sysconfdir}/X11/xinit.d/update-menus
