@@ -3,7 +3,7 @@
 Summary:	Packages to help old desktop environments follow XDG standards
 Name:		xdg-compliance
 Version:	1.3.1
-Release:	1
+Release:	2
 License:	MIT
 Group:		Graphical desktop/Other
 URL:		https://gitlab.com/somini/xdg-autostart
